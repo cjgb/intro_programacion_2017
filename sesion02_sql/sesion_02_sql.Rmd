@@ -1,0 +1,60 @@
+---
+title: "SQL"
+author: "Carlos J. Gil Bellosta"
+date: '`r Sys.Date()`'
+output:
+  html_document:
+    toc: true
+    toc_float:
+      collapsed: false
+      smooth_scroll: false
+    theme: united
+    highlight: tango
+---
+
+## Objetivos
+
+En esta sección vamos a apreder los principios básicos de SQL:
+
+* Creación de _queries_: _selects_, _joins_, etc. con especial énfasis en el significado de las transformaciones.
+* Instalación de MySQL y conexión a él.
+
+## Introducción a SQL
+
+Aprenderemos los rudimentos de SQL mientras seguimos el [tutorial de SQLBolt](https://sqlbolt.com/).
+
+
+## Instalación de MySQL
+
+Queremos instalar dos componentes: SQL y un IDE, que será MySQL Workbench. Ambos se descargan desde [esta página](https://dev.mysql.com/downloads/).
+
+El proceso de instalación de R depende de tu sistema operativo. Busca las instrucciones oportunas en internet.
+
+
+## Importación de datos
+
+Vamos a seguir [estas instrucciones](https://dev.mysql.com/doc/employee/en/employees-installation.html) para cargar [estos datos](https://github.com/datacharmer/test_db). Después usaremos nuestros conocimientos de SQL para explorar la base de datos:
+
+* ¿Cuándo fue contratado el empleado más antiguo?
+* ¿Cuántos empleados hay?
+* ...
+
+
+## Conexión a MySQL desde R
+
+Vamos a seguir el _script_ `src.R` que nos enseña como cargar la tabla (descargada del [portal de datos abiertos del ayuntamiento de Madrid](http://datos.madrid.es)) de relación de puestos de trabajo (RPT) del ayuntamiento de 2017.
+
+Leeremos la tabla desde R, la limpiaremos y la insertaremos en MySQL. Después lanzaremos consultas a sobre ella directamente desde R.
+
+
+
+
+
+
+
+
+
+
+
+
+
