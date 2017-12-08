@@ -1,0 +1,60 @@
+# Ejercicios
+
+## Descargas de _software_
+
+En esta sesión vamos a realizar una serie de ejercicios. Pero comenzaremos descargando algunas de las herramientas que usaremos durante el curso. En riguroso orden de aparición, serán:
+
+* [GitKraken](https://www.gitkraken.com/download)
+* [R](https://cran.r-project.org/) y [RStudio](https://www.rstudio.com/products/rstudio/download/).
+* [Anaconda](https://conda.io/docs/user-guide/install/index.html) (Python)
+
+Y para ir avanzando, para la siguiente sesión:
+
+* [MySQL y MySQL Workbench](https://dev.mysql.com/downloads/).
+
+
+## Ejercicios guiados
+
+Mientras todo baja, vamos a aprovechar para:
+
+* Abrir una cuenta en Github
+* Abrir una cuenta en Slack y crear un canal para la clase.
+
+Entonces, vamos a crear un repositorio en GitHub, y a realizar las operaciones básicas con él.
+
+* Clonar el repositorio localmente
+* Editar el fichero README.md
+* Hacer _commit_ del fichero
+* Hacer _push_ de los cambios
+
+Luego, por parejas, os haréis colaboradores de los proyectos de vuestro compañero:
+
+* Clonaréis sus proyectos.
+* Crearéis el fichero `hola.md` en su respositorio y subiréis los cambios.
+* Haréis un _pull_ de los cambios de vuestro compañero.
+
+
+## Markdown
+
+Aprenderemos Markdown usando [esta guía] para editar el fichero README.md de vuestro repositorio añadiendo contenido y usando todas las propiedades de Markdown: negritas, listas, secciones, subsecciones, etc.
+
+
+## Rmarkdown y LaTeX
+
+Usaremos R para crear documentos en un dialecto de Markdown, RMarkdown, y en particular, aprenderemos a:
+
+* Insertar fórmulas en LaTeX dentro de documentos de RMarkdown
+* Combinar código en R y sus salidas con Markdown
+
+Los _pedazos_ (_chunks_) de R en RMarkdown admiten opciones que están documentadas [aquí](https://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf) (y otros sitios).
+
+
+### pandoc
+
+`pandoc` es el programa en el que se apoya Rmarkdown para generar salidas en diversos formatos (Word, html, PDF, etc.). Es un programa independiente que permite traducir documentos de unos formatos a otros. Es muy típico que el formato fuente de un documento sea Markdown y que sus diversas versiones se rendericen automáticamente a partir de él (y, también típicamente, usando `pandoc`)
+
+
+### Para saber más
+
+* Es posible generar ficheros en PDF usando LaTeX (o XeLaTeX). En Linux es sencillo. Además, es posible insertar cabeceras de formato específicas (p.e., formato artículo o tesis) en los documentos.
+* Es posible crear presentaciones directamente en Markdown / RMarkdown (véase, p.e., [esto](https://logfc.wordpress.com/2015/06/24/presentations-in-rmarkdown/)).

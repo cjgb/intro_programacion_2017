@@ -110,6 +110,7 @@ Hay código bueno y código malo. El código bueno es:
 * Legible y comprensible (por humanos)
 * Eficiente (frecuentemente, legibilidad y eficiencia son la misma cosa pero, en ocasiones, sucede al revés).
 * Mantenible, i.e., es fácil de modificar y ampliar
+* Tiene pruebas y _tests_ automáticos
 
 El código malo es lo contario.
 
@@ -118,6 +119,7 @@ La historia de la ingeniería de _software_ es la historia de un conjunto de pr�
 * La programación estructurada: está orientada a partir programas largos y complejos en funciones más simples.
 * La programación orientada a objetos: que abunda en la anterior y encapsula datos y funciones en unidades de código, los objetos, independientes.
 * La programación funcional: de inspiración matemática, introduce una serie de operaciones comunes (_map_, _reduce_, etc.) y permite abstaer _lo que los programas hacen_ de _la máquina donde corren los programas_. Por eso es fundamental en el mundo de la computación distribuida y subyace a todas las tecnologías _big data_ modernas: Hadoop, Spark, etc.
+* TODO: ¿algo sobre _tests_ unitarios?
 
 Existen muchos principios más granulares que los anteriores que sirven de criterio para escrbir código de una manera u otra. Por ejemplo:
 

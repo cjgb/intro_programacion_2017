@@ -1,16 +1,4 @@
----
-title: "Reproducibilidad y colaboración"
-author: "Carlos J. Gil Bellosta"
-date: '`r Sys.Date()`'
-output:
-  html_document:
-    toc: true
-    toc_float:
-      collapsed: false
-      smooth_scroll: false
-    theme: united
-    highlight: tango
----
+# Reproducibilidad y colaboración
 
 ## Objetivos
 
@@ -24,13 +12,13 @@ Esta tecnología trata de hacer posibles ---nótese que no es condición suficie
 
 ## Herramientas y métodos
 
-Una tecnología se implementa a través de herramientas y métodos. Existen diversas alternativas, versiones y marcas comerciales, todos con sus ventajas e inconvenientes. 
+Una tecnología se implementa a través de herramientas y métodos. Existen diversas alternativas, versiones y marcas comerciales, todos con sus ventajas e inconvenientes.
 
 La selección que he realizado se ha basado en mis gustos y preferencias personales. Por eso es imperativo que pruebes otras, las compares y acabes diseñando tu propio _stack_ personal.
 
 Ten en cuenta, no obstante, esta advertencia contra la excesiva personalización: que está reñida con el objetivo de colaboración. La tensión entre las tendencias centrífugas de las preferencias personales y las centrípetas de los estándares y códigos de estilo ha de resolverse razonablemente.
 
-## Herramientas
+### Herramientas
 
 Las herramientas que utilizaremos son:
 
@@ -44,7 +32,7 @@ Las herramientas que utilizaremos son:
 - Slack, una herramienta de comunicación para equipos de trabajo.
 
 
-## Métodos
+### Métodos
 
 Existe una serie de principios generales de los que emanan las buenas prácticas a seguir en el desarrollo de un proyecto de análisis de datos. El libro [_The pragmatic programmer_](https://pragprog.com/book/tpp/the-pragmatic-programmer) recoge buen número de ellos. Uno de ellos es el de la [_mínima sorpresa_](https://en.wikipedia.org/wiki/Principle_of_least_astonishment).
 
@@ -58,52 +46,64 @@ Otro criterio mucho más difícil de cuantificar es el estético: en la práctic
 
 La **documentación** ---i.e., documentar el código y documentar _en_ el código--- es un _sine qua non_. Aunque lenguajes de alto nivel como R o Python son tan expresivos que el mismo código documenta frecuentemente mejor su intención que una frase en el ambiguo lenguaje que usamos los humanos, es imperativo añadir referencias, notas y aclaraciones en los puntos más críticos del código: lo que haces no siempre deja en claro el por qué ni el para qué. Para saber más sobre el asunto, es conveniente familiarizarse con el movimiento en pro de la [_programación literaria_](https://en.wikipedia.org/wiki/Literate_programming).
 
-Las ideas tienen su reflejo en el _software_. En particular, existe una relación biyectiva entre el **orden y limpieza** entre las primearas y el segundo. Herramientas de versionamiento de archivos (como, por ejemplo, `git`) gestionan la dimensión temporal del desarrollo de un proyecto. Pero la dimensión _espacial_ también es importante: dónde guardar cada cosa. 
+Las ideas tienen su reflejo en el _software_. En particular, existe una relación biyectiva entre el **orden y limpieza** entre las primearas y el segundo. Herramientas de versionamiento de archivos (como, por ejemplo, `git`) gestionan la dimensión temporal del desarrollo de un proyecto. Pero la dimensión _espacial_ también es importante: dónde guardar cada cosa.
 
 
 ### Gestión básica de proyectos
 
-Una recomendación razonable es dedicar una carpeta específica para proyectos en desarrollo. Los finiquitados pueden comprimirse y archivarse en otra parte. Dentro de ella, crear una carpeta nueva por proyecto. Estos proyectos tienen que estar versionados y, por lo tanto, como consecuencia, **respaldados** en otra parte. 
+Una recomendación razonable es dedicar una carpeta específica para proyectos en desarrollo. Los finiquitados pueden comprimirse y archivarse en otra parte. Dentro de ella, crear una carpeta nueva por proyecto. Estos proyectos tienen que estar versionados y, por lo tanto, como consecuencia, **respaldados** en otra parte.
 
 Hay proyectos de muchos tipos, pero una manera de organizar los archivos correspondientes a uno genérico es mediante la creación de subcarpetas. Las que suelo utilizar yo son:
 
-- `dat`. Dentro de ella almaceno los datos del proyecto. Los ficheros recibidos los guardo siempre tal cual, sin modificación, y suelo sufijar su nombre con la fecha de recepción. 
+- `dat`. Dentro de ella almaceno los datos del proyecto. Los ficheros recibidos los guardo siempre tal cual, sin modificación, y suelo sufijar su nombre con la fecha de recepción.
 - `staging`, que es opcional y donde suelo almacenar datos preprocesados. En ocasiones la lectura de los datos originales es demasiado tediosa y suelo guardar un volcado de los datos originales por cuestiones de eficiencia. Idealmente, este volcado lo realiza un _script_ que solo tengo que correr cuando se actualizan los datos de entrada. En ocasiones los datos originales son tan exóticos (p.e., hojas de Excel con una estructura excesivamente creativa) que es imposible el preprocesamiento automático.
 - `src`. Contiene el código. Habitualmente, los programas están prefijados con un número de orden si es que tienen que ser ejecutados secuencialmente. A veces se incluye un _lanzador_ que permite ejecutarlos automáticamente.
 - `res`. Para resultados y salidas.
 - `informes`. Para RMarkdown y similares.
 
-Notas: 
+**Notas:**
 
 - Es malísima práctica que el código incluya [rutas absolutas a ficheros](https://en.wikipedia.org/wiki/Path_(computing)#Absolute_and_relative_paths). Con la estructura anterior, el código que habita en `src` puede acceder a datos de `staging` o `dat` mediante rutas relativas.
-- No es recomendable versionar datos y resultados, particularmente si se trata de ficheros enormes (o binarios). `git` y otras herramientas permiten excluir determinados directorios, ficheros y tipos de ficheros explícitamente. Eso no quita que sea deseable respaldar los datos de entrada. 
+- No es recomendable versionar datos y resultados, particularmente si se trata de ficheros enormes (o binarios). `git` y otras herramientas permiten excluir determinados directorios, ficheros y tipos de ficheros explícitamente. Eso no quita que sea deseable respaldar los datos de entrada.
 
 
 ## Colaboración y versionado de ficheros
 
-Hablar de git.
+La manera en que se gestionaban proyectos de _software_ antes de `git` (y su predecesor más directo, `subversion`) es asunto de historiadores de la informática. Solo podemos aventurar que muy mal: todavía quedan sitios donde no se utilizan esas herramientas y el resultado es caos e infraproductividad.
 
-Referencia de git para científicos.
+### git
 
-Mencionar GitKraken y similares.
+`git` es un sistema moderno para gestionar proyectos de _software_. Contempla las dos dimensiones de todo proyecto de _software_: el código y los colaboradores:
 
-Referencias:
+* Permite que el código evolucione naturalmente, archivando versiones antiguas, permitiendo la creación de _ramas_, versiones, _releases_, etc.
+* Permite la colaboración de equipos de programadores, frecuentemente trabajando desde ubicaciones distintas, permitiéndoles trabajar en paralelo sobre una misma versión del código.
 
-https://www.sbf5.com/~cduan/technical/git/
+Los usuarios de `git` tienen en su máquina local copias del proyecto sobre la que trabajan y, cuando terminan, publican sus cambios en un repositorio común. Normalmente, un usuario, al comenzar a trabajar, _descarga_ (_pull_) la versión más reciente del proyecto, lo modifica y publica sus cambios (_push_) al repositorio.
 
-https://guides.github.com/introduction/git-handbook/
+Durante una sesión de trabajo, el usuario hace cambios y los _comitea_, es decir, los anota y los prepara para su publicación. Un _commit_, idealmente, es atómico: soluciona un problema y solo un problema. `git` permite trazar qué usuario ha hecho qué cosa y cuándo.
 
+Generalmente, `git` se gestiona desde la línea de comandos. No obstante, existen programas (p.e., [GitKraken](https://www.gitkraken.com/download)) con una interfaz gráfica que pueden resultarte útiles, sobre todo al principio o con proyectos muy complejos.
 
+Hay muchos tutoriales de `git` en internet. Por ejemplo, [este](https://www.sbf5.com/~cduan/technical/git/) o [este](https://guides.github.com/introduction/git-handbook/). Aunque una vez entendido el funcionamiento básico de `git`, su uso se reduce a:
 
-
-## Ejercicio
-
-Vamos a practicar todo lo anterior realizando un análisis ---basta con que sea descriptivo--- de un conjunto de datos. Podremos usar cualquiera del repositorio de datos abiertos de Madrid (p.e., de accidentes de tráfico con bicicletas involucradas, los de ejecución presupuestaria o los de usos de Bicimad) o alguno de vuestro interés.
-
-El ejercicio lo realizaremos en grupos de tres personas, idealmente no sentadas en puestos colindantes. Eso sí, podéis preguntar a quien se siente a vuestro lado, aunque pertenezca a otro equipo.
-
+* Las operaciones más repetitivas (`clone`, `pull`, `commit`, `push` y poco más), que harás rápidamente desde línea de comandos.
+* Las menos habituales (_revertir_ un _commit_, solucionar un conflicto, etc.) que resolverás buscando por internet.
 
 
+### GitHub y otros
+
+`git` es un programa libre que puedes instalar en tu ordenador (para usarlo como cliente) o en un servidor para alojar por tu cuenta tus propios repositorios. Sin embargo, existen empresas/servicios como GitHub, BitBucket o GitLab que permite alojar tus proyectos en sus servidores.
+
+* GitHub: es el pionero y más popular. Permite alojar proyectos públicos gratuitamente y privados previo pago. Permite un número ilimitado de usuarios/colaboradores.
+* BitBucket: permite alojar proyectos públicos y privados gratuitamente. El servicio se vuelve no gratuito cuando se excede un número determinado de colaboradores.
+* GitLab: un servicio posterior (TODO: ¿cómo funciona?).
 
 
+### Tests unitarios
 
+TODO: comentar los _tests_ unitarios y su integración con GitHub y otros.
+
+
+### Gestión de tareas
+
+TODO: comentar Trello.
