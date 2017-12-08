@@ -1,0 +1,109 @@
+---
+title: "Reproducibilidad y colaboración"
+author: "Carlos J. Gil Bellosta"
+date: '`r Sys.Date()`'
+output:
+  html_document:
+    toc: true
+    toc_float:
+      collapsed: false
+      smooth_scroll: false
+    theme: united
+    highlight: tango
+---
+
+## Objetivos
+
+El objetivo fundamental de esta sesión es mostrar y practicar una tecnología de gestión profesional de proyectos de programación y análisis de datos. Consiste en el uso de una serie de herramientas y métodos, algunas de cuyas alternativas ---hay, obviamente, otras--- discutiremos durante la sesión.
+
+Esta tecnología trata de hacer posibles ---nótese que no es condición suficiente ni necesaria: a lo más, posibilita o facilita--- dos objetivos ulteriores:
+
+- La **reproducibilidad**, que consiste en que todos los análisis y resultados pueden ser recalculados automáticamente y sin intervención humana si, por ejemplo, cambian los datos de origen o se detecta y solucina un _bug_.
+- La **colaboración** entre distintos coautores. Plantear proyectos de manera que permitan la colaboración es útil incluso en proyectos personales, en el que el _yo de hoy_ tiene que facilitar el trabajo lo más posible al _yo de la semana que viene_.
+
+
+## Herramientas y métodos
+
+Una tecnología se implementa a través de herramientas y métodos. Existen diversas alternativas, versiones y marcas comerciales, todos con sus ventajas e inconvenientes. 
+
+La selección que he realizado se ha basado en mis gustos y preferencias personales. Por eso es imperativo que pruebes otras, las compares y acabes diseñando tu propio _stack_ personal.
+
+Ten en cuenta, no obstante, esta advertencia contra la excesiva personalización: que está reñida con el objetivo de colaboración. La tensión entre las tendencias centrífugas de las preferencias personales y las centrípetas de los estándares y códigos de estilo ha de resolverse razonablemente.
+
+## Herramientas
+
+Las herramientas que utilizaremos son:
+
+- R, un entorno programable para el análisis estadístico y gráfico de datos.
+- RStudio, un IDE para R orientado al análisis interactivo (a diferencia de otros IDEs, que están orientados al desarrollo de programas complejos).
+- Markdown, un lenguaje de etiquetado para escribir ---fundamentalmente--- texto que puede ser volcado posteriormente a distintos formatos: HTML, PDF, Word, etc. En alguno de sus dialectos es posible insertar también fórmulas en $\LaTeX$.
+- RMarkdown, una extensión de Markdown que permite preprocesar código en R incrustado en un documento. De esa manera, código, análisis y descripción de los resultados de un estudio pueden convivir en un mismo fichero.
+- Jupyter, una herramienta similar a RMarkdown en tanto que permite combinar texto y código. Mientras que RMarkdown está dirigido a la creación de documentos estáticos, Jupyter abunda en el espíritu de los _cuadernos_ de Mathematica o Matlab.
+- `git`, un gestor de versiones.
+- Github, un servicio en la nube para alojar proyectos versionados con `git`.
+- Slack, una herramienta de comunicación para equipos de trabajo.
+
+
+## Métodos
+
+Existe una serie de principios generales de los que emanan las buenas prácticas a seguir en el desarrollo de un proyecto de análisis de datos. El libro [_The pragmatic programmer_](https://pragprog.com/book/tpp/the-pragmatic-programmer) recoge buen número de ellos. Uno de ellos es el de la [_mínima sorpresa_](https://en.wikipedia.org/wiki/Principle_of_least_astonishment).
+
+Según este principio, el planteamiento y diseño de un proyecto debe tener en cuenta la experiencia, expectativas y modelos mentales de sus desarrolladores.
+
+### Guías de estilo
+
+Una manera de minimizar el factor sorpresa es atenerse a **convenciones y guías de estilo** en el código: cómo indentar, qué tipo de nombre asignar las variables, etc. Existen guías de estilo para todos los lenguajes de programación, algunas de las cuales se contradicen entre sí. La principal regla al respecto es la consistencia: aunque coexistan distintas guías de estilo fuera de un proyecto, dentro de él solo hay una.
+
+Otro criterio mucho más difícil de cuantificar es el estético: en la práctica, el código bueno es código estéticamente bello. Recíprocamente, casi todo el código feo es malo. Y no es casualidad: un código bello es más fácil de revisar, entender y depurar.
+
+La **documentación** ---i.e., documentar el código y documentar _en_ el código--- es un _sine qua non_. Aunque lenguajes de alto nivel como R o Python son tan expresivos que el mismo código documenta frecuentemente mejor su intención que una frase en el ambiguo lenguaje que usamos los humanos, es imperativo añadir referencias, notas y aclaraciones en los puntos más críticos del código: lo que haces no siempre deja en claro el por qué ni el para qué. Para saber más sobre el asunto, es conveniente familiarizarse con el movimiento en pro de la [_programación literaria_](https://en.wikipedia.org/wiki/Literate_programming).
+
+Las ideas tienen su reflejo en el _software_. En particular, existe una relación biyectiva entre el **orden y limpieza** entre las primearas y el segundo. Herramientas de versionamiento de archivos (como, por ejemplo, `git`) gestionan la dimensión temporal del desarrollo de un proyecto. Pero la dimensión _espacial_ también es importante: dónde guardar cada cosa. 
+
+
+### Gestión básica de proyectos
+
+Una recomendación razonable es dedicar una carpeta específica para proyectos en desarrollo. Los finiquitados pueden comprimirse y archivarse en otra parte. Dentro de ella, crear una carpeta nueva por proyecto. Estos proyectos tienen que estar versionados y, por lo tanto, como consecuencia, **respaldados** en otra parte. 
+
+Hay proyectos de muchos tipos, pero una manera de organizar los archivos correspondientes a uno genérico es mediante la creación de subcarpetas. Las que suelo utilizar yo son:
+
+- `dat`. Dentro de ella almaceno los datos del proyecto. Los ficheros recibidos los guardo siempre tal cual, sin modificación, y suelo sufijar su nombre con la fecha de recepción. 
+- `staging`, que es opcional y donde suelo almacenar datos preprocesados. En ocasiones la lectura de los datos originales es demasiado tediosa y suelo guardar un volcado de los datos originales por cuestiones de eficiencia. Idealmente, este volcado lo realiza un _script_ que solo tengo que correr cuando se actualizan los datos de entrada. En ocasiones los datos originales son tan exóticos (p.e., hojas de Excel con una estructura excesivamente creativa) que es imposible el preprocesamiento automático.
+- `src`. Contiene el código. Habitualmente, los programas están prefijados con un número de orden si es que tienen que ser ejecutados secuencialmente. A veces se incluye un _lanzador_ que permite ejecutarlos automáticamente.
+- `res`. Para resultados y salidas.
+- `informes`. Para RMarkdown y similares.
+
+Notas: 
+
+- Es malísima práctica que el código incluya [rutas absolutas a ficheros](https://en.wikipedia.org/wiki/Path_(computing)#Absolute_and_relative_paths). Con la estructura anterior, el código que habita en `src` puede acceder a datos de `staging` o `dat` mediante rutas relativas.
+- No es recomendable versionar datos y resultados, particularmente si se trata de ficheros enormes (o binarios). `git` y otras herramientas permiten excluir determinados directorios, ficheros y tipos de ficheros explícitamente. Eso no quita que sea deseable respaldar los datos de entrada. 
+
+
+## Colaboración y versionado de ficheros
+
+Hablar de git.
+
+Referencia de git para científicos.
+
+Mencionar GitKraken y similares.
+
+Referencias:
+
+https://www.sbf5.com/~cduan/technical/git/
+
+https://guides.github.com/introduction/git-handbook/
+
+
+
+
+## Ejercicio
+
+Vamos a practicar todo lo anterior realizando un análisis ---basta con que sea descriptivo--- de un conjunto de datos. Podremos usar cualquiera del repositorio de datos abiertos de Madrid (p.e., de accidentes de tráfico con bicicletas involucradas, los de ejecución presupuestaria o los de usos de Bicimad) o alguno de vuestro interés.
+
+El ejercicio lo realizaremos en grupos de tres personas, idealmente no sentadas en puestos colindantes. Eso sí, podéis preguntar a quien se siente a vuestro lado, aunque pertenezca a otro equipo.
+
+
+
+
+
+
