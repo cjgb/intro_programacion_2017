@@ -33,4 +33,3 @@ dbWriteTable(con, value = datos, name = "ayto_madrid")
 # queries sobre la base de datos
 
 res <- dbGetQuery(con, "select * from ayto_madrid order by complemento_especifico desc limit 100")
-
